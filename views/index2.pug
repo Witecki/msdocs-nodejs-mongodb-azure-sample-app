@@ -1,0 +1,22 @@
+
+
+link(rel='stylesheet', href='/css/bootstrap.css')
+link(rel='stylesheet', href='/stylesheets/style.css')
+main(class='container' style='max-width: 720px')
+
+
+  form(action='./addNote' method='POST' class='form-registration')
+    div(class='row my-2')
+        div(class='col-md-10')
+          input(id="a" class="form-control form-control-sm" type="text" name='noteName', placeholder="Enter new note here" )
+        div(class='col-md-1 text-end')
+          button(class='btn btn-success btn-sm' type='submit') Add
+  
+  div(class='row mb-3 border-bottom border-3')
+
+  each note in Notes
+    div(class='row mb-2')
+      div(class='col-sm-6') #{note.noteName}
+
+
+  

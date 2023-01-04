@@ -1,6 +1,5 @@
 var express = require('express');
 var Task = require('../models/task');
-var Note = require('../models/note');
 
 var router = express.Router();
 
@@ -18,28 +17,24 @@ router.get('/', function(req, res, next) {
       console.log(err);
       res.send('Sorry! Something went wrong.');
     });
-
-   
 });
 
 
 /* GET index2 page. */
 router.get('/index2', function(req, res, next) {
-      console.log(`get index2`)
+  Task.find()
+    .then((tasks) => {      
+      const currentTasks = tasks.filter(task => !task.completed);
+      const completedTasks = tasks.filter(task => task.completed === true);
 
-  Note.find()
-    .then((notes) => {      
-      const Notes = notes;
-
-      console.log(`Total notes: ${notes.length} `)
-      res.render('index2', {Notes: Notes });
-
+      console.log(`Total tasks: ${tasks.length}   Current tasks: ${currentTasks.length}    Completed tasks:  ${completedTasks.length}`)
+      res.render('index2', { currentTasks: currentTasks, completedTasks: completedTasks });
+      this.getElementById("A").focus();
     })
     .catch((err) => {
       console.log(err);
       res.send('Sorry! Something went wrong.');
     });
-
 });
 
 
@@ -57,26 +52,7 @@ router.post('/addTask', function(req, res, next) {
   task.save()
       .then(() => { 
         console.log(`Added new task ${taskName} - createDate ${createDate}`)        
-        res.redirect('/'); })
-      .catch((err) => {
-          console.log(err);
-          res.send('Sorry! Something went wrong.');
-      });
-});
-
-router.post('/addNote', function(req, res, next) {
-  const noteName = req.body.noteName;
-  const createDate = Date.now();
-  
-  var note = new Note({
-    noteName: noteName,
-    createDate: createDate
-  });
-  console.log(`Adding a new NOTE ${noteName} - createDate ${createDate}`)
-
-  note.save()
-      .then(() => { 
-        console.log(`Added new NOTE ${noteName} - createDate ${createDate}`)        
+        console.log(`!!!!!!!!!!!!!!!!! index 2post add task function`)     
         res.redirect('/index2'); })
       .catch((err) => {
           console.log(err);

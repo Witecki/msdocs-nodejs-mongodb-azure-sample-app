@@ -1,7 +1,32 @@
+
+input[type=text] {
+  background-color: #120d27;
+  color: #5b6810;
+  border: 1px solid #DDD;
+  font-weight: 800;
+}
+input:focus[type=text]{
+  border: 1px solid rgb(235, 9, 9);
+  background-color: #120d27;
+  color: #5b6810;
+  font-weight: 800;
+}
+
+button[type=submit]{
+background-color: #120d27;
+color:#5b6810;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #120d27;
+  color: #5b6810
+
+  
 }
+
+
 
 a {
   color: #00B7FF;
@@ -12,6 +37,6 @@ a {
 }
 
 .bg-azure-light-gray {
- /* background-color: #EBEBEB; */
- background-color: #4026a6;
+  background-color: #EBEBEB; 
+
 }
