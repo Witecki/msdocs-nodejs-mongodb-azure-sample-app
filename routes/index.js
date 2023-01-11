@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
 router.get('/index2', function(req, res, next) {
       console.log(`get index2`)
 
-  Note.find().sort({createDate: -1})
+  Note.find().sort({_id: -1})
     .then((notes) => {      
       const Notes = notes;
 
