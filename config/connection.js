@@ -34,6 +34,7 @@ async function getConnectionInfo() {
   return {
     DATABASE_URL: process.env.DATABASE_URL,
     DATABASE_NAME: process.env.DATABASE_NAME
+   DATABASE_URL: "https://marcinek3-server.mongo.cosmos.azure.com:443/"
   }
 }
 
